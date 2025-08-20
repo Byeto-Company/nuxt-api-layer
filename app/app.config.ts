@@ -11,6 +11,7 @@ declare module "@nuxt/schema" {
         apiLayer?: {
             /** Project name */
             name?: string;
+            name2?: number;
         };
     }
 }
