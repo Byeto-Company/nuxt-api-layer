@@ -7,7 +7,7 @@ import { AxiosError } from "axios";
 export default defineNuxtPlugin({
     enforce: "pre",
     setup: (nuxt) => {
-        const toast = useToast();
+        const appConfig = useAppConfig();
 
         const vueQueryState = useState<DehydratedState | null>("vue-query");
 
@@ -35,24 +35,14 @@ export default defineNuxtPlugin({
         const errorHandler = (error: ApiError) => {
             if (import.meta.client && error instanceof AxiosError) {
                 if (error.status && error.status >= 400 && error.status <= 499) {
-                    const errorsText = flattenErrors(error);
-
-                    toast.add({
-                        color: "error",
-                        title:
-                            process.env.NODE_ENV !== "development"
-                                ? ` خطا : ${error.status} - ${error.code} - ${error.cause}`
-                                : "لطفا توجه کنید !",
-                        description: errorsText.join("\n"),
-                        icon: "fa-duo:circle-exclamation",
-                    });
+                    if (appConfig.appApi?.errorCallback) {
+                        const errorsText = flattenErrors(error);
+                        appConfig.appApi?.errorCallback(errorsText);
+                    }
                 } else {
-                    toast.add({
-                        color: "error",
-                        title: "مشکلی پیش آمده",
-                        description: "خطایی سمت سرور رخ داده است لطفا بعدا تلاش کنید",
-                        icon: "fa-duo:circle-exclamation",
-                    });
+                    if (appConfig.appApi?.unhandledErrorCallback) {
+                        appConfig.appApi?.unhandledErrorCallback();
+                    }
                 }
             }
         };

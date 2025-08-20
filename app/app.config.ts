@@ -1,18 +1,13 @@
 import "axios";
 import type { AxiosError } from "axios";
 
-export default defineAppConfig({
-    apiLayer: {
-        name: "Hello from Nuxt layer",
-    },
-});
+export default defineAppConfig({});
 
 declare module "@nuxt/schema" {
-    interface AppConfigInput {
-        apiLayer?: {
-            /** Project name */
-            name?: string;
-            name2?: number;
+    interface AppConfig {
+        appApi?: {
+            errorCallback?: (errors: string[]) => void;
+            unhandledErrorCallback?: () => void;
         };
     }
 }
