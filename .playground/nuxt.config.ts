@@ -1,7 +1,7 @@
 import { fileURLToPath } from "node:url";
 
 export default defineNuxtConfig({
-    extends: ["github:Byeto-Company/nuxt-auth-layer", ".."],
+    extends: [".."],
     modules: ["@nuxt/eslint"],
     eslint: {
         config: {

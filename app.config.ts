@@ -4,7 +4,7 @@ import type { AxiosError } from "axios";
 export default defineAppConfig({});
 
 declare module "@nuxt/schema" {
-    interface AppConfig {
+    interface AppConfigInput {
         appApi?: {
             errorCallback?: (errors: string[]) => void;
             unhandledErrorCallback?: () => void;
