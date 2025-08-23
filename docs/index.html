@@ -1,0 +1,1246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <title>my-nuxt-layer 1.0.0 | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' rel='stylesheet'>
+  <link href='assets/style.css' rel='stylesheet'>
+  <link href='assets/github.css' rel='stylesheet'>
+  <link href='assets/split.css' rel='stylesheet'>
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'>my-nuxt-layer</h3>
+          <div class='mb1'><code>1.0.0</code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            spellcheck='false'
+            autocapitalize='off'
+            autocorrect='off'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#composablesuseauth'
+                  class=" toggle-sibling">
+                  composables/useAuth
+                  <span class='icon'>▸</span>
+                </a>
+                
+                <div class='toggle-target display-none'>
+                  
+                  <ul class='list-reset py1-ul pl1'>
+                    <li class='h5'><span>Static members</span></li>
+                    
+                      <li><a
+                        href='#composablesuseauthtoken'
+                        class='regular pre-open'>
+                        .token
+                      </a></li>
+                    
+                      <li><a
+                        href='#composablesuseauthrefreshtoken'
+                        class='regular pre-open'>
+                        .refreshToken
+                      </a></li>
+                    
+                      <li><a
+                        href='#composablesuseauthupdatetoken'
+                        class='regular pre-open'>
+                        .updateToken
+                      </a></li>
+                    
+                      <li><a
+                        href='#composablesuseauthupdaterefreshtoken'
+                        class='regular pre-open'>
+                        .updateRefreshToken
+                      </a></li>
+                    
+                      <li><a
+                        href='#composablesuseauthlogout'
+                        class='regular pre-open'>
+                        .logout
+                      </a></li>
+                    
+                      <li><a
+                        href='#composablesuseauthcheckauth'
+                        class='regular pre-open'>
+                        .checkAuth
+                      </a></li>
+                    
+                      <li><a
+                        href='#composablesuseauthisloggedin'
+                        class='regular pre-open'>
+                        .isLoggedIn
+                      </a></li>
+                    
+                    </ul>
+                  
+                  
+                  
+                  
+                </div>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#composablesusegetaccount'
+                  class="">
+                  composables/useGetAccount
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#isenabled'
+                  class="">
+                  isEnabled
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#composablesuseotp'
+                  class="">
+                  composables/useOtp
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#composablesuseotpsignin'
+                  class="">
+                  composables/useOtpSignin
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#composablesuserefreshauth'
+                  class="">
+                  composables/useRefreshAuth
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#composablesuseserversideauthcheck'
+                  class="">
+                  composables/useServerSideAuthCheck
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#composablesusesignout'
+                  class="">
+                  composables/useSignOut
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#composablesuseupdateaccount'
+                  class="">
+                  composables/useUpdateAccount
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#composablesuseverify'
+                  class="">
+                  composables/useVerify
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesuseauth'>
+      composables/useAuth
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for handling authentication logic.
+Provides helpers for managing tokens, verifying sessions,
+refreshing tokens, and logging out users.</p>
+
+    <div class='pre p1 fill-light mt0'>composables/useAuth</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        Authentication state and methods
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Static Members</div>
+    <div class="clearfix">
+  
+    <div class='border-bottom' id='composablesuseauthtoken'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>token</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Reactive cookie ref storing the access token.</p>
+
+    <div class='pre p1 fill-light mt0'>token</div>
+  
+    <p>
+      Type:
+      Ref&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='composablesuseauthrefreshtoken'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>refreshToken</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Reactive cookie ref storing the refresh token.</p>
+
+    <div class='pre p1 fill-light mt0'>refreshToken</div>
+  
+    <p>
+      Type:
+      Ref&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='composablesuseauthupdatetoken'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>updateToken</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Update the stored access token.</p>
+
+    <div class='pre p1 fill-light mt0'>updateToken</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>newToken</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    New access token value
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='composablesuseauthupdaterefreshtoken'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>updateRefreshToken</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Update the stored refresh token.</p>
+
+    <div class='pre p1 fill-light mt0'>updateRefreshToken</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>newToken</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    New refresh token value
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='composablesuseauthlogout'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>logout</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Log out the user by clearing tokens and optionally reloading the page.</p>
+
+    <div class='pre p1 fill-light mt0'>logout</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>reload</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>?)</code>
+	    If true, reloads the page after logout
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;void></code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='composablesuseauthcheckauth'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>checkAuth</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Check if the current user session is valid.</p>
+<ul>
+<li>Verifies the access token</li>
+<li>If invalid, tries to refresh the token</li>
+<li>If refreshing fails, logs out</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>checkAuth</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>></code>:
+        True if authenticated, otherwise false
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+    <div class='border-bottom' id='composablesuseauthisloggedin'>
+      <div class="clearfix small pointer toggle-sibling">
+        <div class="py1 contain">
+            <a class='icon pin-right py1 dark-link caret-right'>▸</a>
+            <span class='code strong strong truncate'>isLoggedIn</span>
+        </div>
+      </div>
+      <div class="clearfix display-none toggle-target">
+        <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+
+  <p>Whether the user is logged in.</p>
+
+    <div class='pre p1 fill-light mt0'>isLoggedIn</div>
+  
+    <p>
+      Type:
+      ComputedRef&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+      </div>
+    </div>
+  
+</div>
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesusegetaccount'>
+      composables/useGetAccount
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for fetching the current user's account profile.</p>
+<ul>
+<li>Uses authentication token from <code>useAuth</code></li>
+<li>Only runs when a valid token is available</li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>composables/useGetAccount</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        A query object from 
+<code>useOne</code>
+ for fetching account profile
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='isenabled'>
+      isEnabled
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Whether the request is enabled.
+This is a Vue computed ref (boolean).</p>
+
+    <div class='pre p1 fill-light mt0'>isEnabled</div>
+  
+    <p>
+      Type:
+      ComputedRef&#x3C;<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a>>
+    </p>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesuseotp'>
+      composables/useOtp
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for sending OTP (One-Time Password) requests.
+Wraps <code>useCreate</code> with the OTP API endpoint.</p>
+
+    <div class='pre p1 fill-light mt0'>composables/useOtp</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        A mutation object from 
+<code>useCreate</code>
+ for sending OTP requests
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesuseotpsignin'>
+      composables/useOtpSignin
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for signing in a user using OTP (One-Time Password).
+Wraps <code>useCreate</code> with the OTP sign-in API endpoint.</p>
+
+    <div class='pre p1 fill-light mt0'>composables/useOtpSignin</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        A mutation object from 
+<code>useCreate</code>
+ for handling OTP sign-in
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesuserefreshauth'>
+      composables/useRefreshAuth
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for refreshing authentication tokens.
+Wraps <code>useCreate</code> with the token refresh API endpoint.</p>
+
+    <div class='pre p1 fill-light mt0'>composables/useRefreshAuth</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        A mutation object from 
+<code>useCreate</code>
+ for refreshing tokens
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesuseserversideauthcheck'>
+      composables/useServerSideAuthCheck
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for handling server-side authentication check.</p>
+<ul>
+<li>Verifies if the user is authenticated using <code>checkAuth</code></li>
+<li>If valid, prefetches the account data using <code>suspense</code></li>
+<li>Runs during server-side rendering via <code>onServerPrefetch</code></li>
+</ul>
+
+    <div class='pre p1 fill-light mt0'>composables/useServerSideAuthCheck</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>void</code>:
+        
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesusesignout'>
+      composables/useSignOut
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for signing out a user.
+Wraps <code>useCreate</code> with the logout API endpoint.</p>
+
+    <div class='pre p1 fill-light mt0'>composables/useSignOut</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        A mutation object from 
+<code>useCreate</code>
+ for signing out
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesuseupdateaccount'>
+      composables/useUpdateAccount
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for updating the current user's account profile.
+Wraps <code>useUpdate</code> with the account profile API endpoint.</p>
+
+    <div class='pre p1 fill-light mt0'>composables/useUpdateAccount</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        A mutation object from 
+<code>useUpdate</code>
+ for updating account profile
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='composablesuseverify'>
+      composables/useVerify
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>Composable for verifying an access token.
+Wraps <code>useCreate</code> with the token verification API endpoint.</p>
+
+    <div class='pre p1 fill-light mt0'>composables/useVerify</div>
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></code>:
+        A mutation object from 
+<code>useCreate</code>
+ for verifying tokens
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+          
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>

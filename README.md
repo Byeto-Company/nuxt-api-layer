@@ -1,30 +1,45 @@
-### Dependencies
+### Installation and Dependencies
 
-This layer is dependent on nuxt-api-layer
+`npm i @tanstack/vue-query @tanstack/vue-query-devtools axios @nuxtjs/i18n`
 
----
-
-### Define account type
-
-```typescript
-export {};
-
-declare global {
-    type AccountProfile = /* Account Object */
-
-    type UpdateAccountProfile = /* Account Updatable Object */
-}
-```
+### Global api types
 
 ---
 
-### Customize auth options
+```typescript
+type ApiPaginated<T> = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: T[];
+};
+
+type ApiErrorData = Record<string, (string | ApiErrorData)[]>;
+
+type ApiError = AxiosError<ApiErrorData>;
+```
+
+### App configs
+
+---
 
 ```typescript
-  appAuth: {
-      internalPage: false,
-      otpCount: 4,
-      otpTimer: 60,
-      pagePath: "/login",
-  }
+    {
+        appApi?: {
+            errorCallback?: (errors: string[]) => void;
+            unhandledErrorCallback?: () => void;
+        };
+    }
 ```
+
+### Api composables list
+
+---
+
+- `composables/useCreate.ts`
+- `composables/useDelete.ts`
+- `composables/useInfiniteMany.ts`
+- `composables/useMany.ts`
+- `composables/useOne.ts`
+- `composables/usePaginatedMany.ts`
+- `composables/useUpdate.ts`

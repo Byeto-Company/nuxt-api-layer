@@ -1,27 +1,28 @@
 {
-  "name": "my-nuxt-layer",
-  "type": "module",
-  "version": "0.0.1",
-  "main": "./nuxt.config.ts",
-  "scripts": {
-    "dev": "nuxi dev .playground",
-    "dev:prepare": "nuxt prepare .playground",
-    "build": "nuxt build .playground",
-    "generate": "nuxt generate .playground",
-    "preview": "nuxt preview .playground",
-    "lint": "eslint ."
-  },
-  "devDependencies": {
-    "@nuxt/eslint": "latest",
-    "eslint": "^9.33.0",
-    "nuxt": "^4.0.3",
-    "typescript": "^5.9.2",
-    "vue": "latest"
-  },
-  "dependencies": {
-    "@nuxtjs/i18n": "^10.0.6",
-    "@tanstack/vue-query": "^5.85.5",
-    "@tanstack/vue-query-devtools": "^5.85.5",
-    "axios": "^1.11.0"
-  }
+    "name": "my-nuxt-layer",
+    "type": "module",
+    "version": "0.0.1",
+    "main": "./nuxt.config.ts",
+    "scripts": {
+        "dev": "nuxi dev .playground",
+        "dev:prepare": "nuxt prepare .playground",
+        "build": "nuxt build .playground",
+        "generate": "nuxt generate .playground",
+        "preview": "nuxt preview .playground",
+        "lint": "eslint .",
+        "gdoc": "documentation build **/*.ts --parse-extension ts -f html -o docs && bun scripts/replace-documentation-theme/index.ts"
+    },
+    "devDependencies": {
+        "@nuxt/eslint": "latest",
+        "eslint": "^9.33.0",
+        "nuxt": "^4.0.3",
+        "typescript": "^5.9.2",
+        "vue": "latest"
+    },
+    "dependencies": {
+        "@nuxtjs/i18n": "^10.0.6",
+        "@tanstack/vue-query": "^5.85.5",
+        "@tanstack/vue-query-devtools": "^5.85.5",
+        "axios": "^1.11.0"
+    }
 }

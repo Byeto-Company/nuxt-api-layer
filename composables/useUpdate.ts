@@ -19,6 +19,29 @@ export type ApiUpdateResourceOptions<TResponse> = {
     authorization?: boolean;
 };
 
+/**
+ * Composable for updating a single API resource using Axios + TanStack Query's `useMutation`.
+ *
+ * @template TResponse - The expected response type from the API.
+ * @template TRequest - The request payload type (must include an `id` field).
+ *
+ * @param {Object} options - Options for configuring the update mutation.
+ * @param {Object} [options.customResource] - Optional custom resource configuration.
+ * @param {string} [options.customResource.name] - Resource name (used for `mutationKey`).
+ * @param {string} options.customResource.path - The API path for the resource (base path, ID is appended automatically).
+ * @param {ComputedRef<Record<any, any>>} [options.urlSearchParams] - Optional query parameters as a computed ref.
+ * @param {AxiosInstance} [options.axiosInstance] - Optional Axios instance (defaults to Nuxt global `$axios`).
+ * @param {Omit<AxiosRequestConfig, "params">} [options.axiosOptions] - Optional Axios request configuration.
+ * @param {Partial<Omit<UseMutationOptions<TResponse>, "mutationKey" | "mutationFn">>} [options.mutationOptions]
+ *        Additional mutation options for TanStack Query.
+ * @param {"form" | "json"} [options.contentType="json"] - Content type for the request body.
+ * @param {boolean} [options.handleError] - Whether to handle errors with a global handler.
+ * @param {boolean} [options.authorization] - Whether to include authorization headers.
+ *
+ * @returns {UseMutationResult<TResponse, ApiError, TRequest & { id: number | string }>}
+ *          A TanStack Query mutation result object.
+ * @module composables/useUpdate
+ */
 const useUpdate = <TResponse, TRequest>({
     urlSearchParams,
     axiosOptions,
