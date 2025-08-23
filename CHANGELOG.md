@@ -2,6 +2,6 @@
 
 ### Added
 
-- Initial release of Nuxt Auth layer.
+- Initial release of Nuxt Api layer.
 
 [1.0.0]: https://github.com/Byeto-Company/nuxt-api-layer/releases/tag/v1.0.0
