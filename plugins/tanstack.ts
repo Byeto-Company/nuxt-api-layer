@@ -53,7 +53,7 @@ export default defineNuxtPlugin({
                 onError: (error, query) => {
                     if (query.meta?.handleError) errorHandler(error as ApiError);
                 },
-            }),
+            }), 
             mutationCache: new MutationCache({
                 onError: (error, _variables, _context, mutation) => {
                     if (mutation.meta?.handleError) errorHandler(error as ApiError);

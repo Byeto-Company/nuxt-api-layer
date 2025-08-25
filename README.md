@@ -27,7 +27,9 @@ type ApiError = AxiosError<ApiErrorData>;
     {
         appApi?: {
             errorCallback?: (errors: string[]) => void;
+            extendHeaders?: (headers: AxiosRequestHeaders) => AxiosRequestHeaders;
             unhandledErrorCallback?: () => void;
+            customAuthorizationHeader?: (token: string) => string;
         };
     }
 ```

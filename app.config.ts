@@ -1,5 +1,5 @@
 import "axios";
-import type { AxiosError } from "axios";
+import type { AxiosError, AxiosRequestHeaders } from "axios";
 
 export default defineAppConfig({});
 
@@ -7,7 +7,18 @@ declare module "@nuxt/schema" {
     interface AppConfigInput {
         appApi?: {
             errorCallback?: (errors: string[]) => void;
+            extendHeaders?: (headers: AxiosRequestHeaders) => AxiosRequestHeaders;
             unhandledErrorCallback?: () => void;
+            customAuthorizationHeader?: (token: string) => string;
+        };
+    }
+
+    interface AppConfig {
+        appApi?: {
+            errorCallback?: (errors: string[]) => void;
+            extendHeaders?: (headers: AxiosRequestHeaders) => AxiosRequestHeaders;
+            unhandledErrorCallback?: () => void;
+            customAuthorizationHeader?: (token: string) => string;
         };
     }
 }
