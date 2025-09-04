@@ -31,15 +31,11 @@ export default defineNuxtPlugin({
             (response) => {
                 return response;
             },
-            async function (error: ApiError) {
-                if (process.env.NODE_ENV === "development") {
-                    console.log(
-                        `[ AXIOS_ERROR ] - [ ${error.response?.config.url} ] - [${error.status}] \n`,
-                        error.response?.data
-                    );
-                }
-                return Promise.reject(error);
-            }
+            // async function (error: ApiError) {
+            //     if (process.env.NODE_ENV === "development") {
+            //     }
+            //     return Promise.reject(error);
+            // }
         );
 
         return {
