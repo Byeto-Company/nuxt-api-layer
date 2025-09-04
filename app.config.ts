@@ -6,7 +6,6 @@ export default defineAppConfig({});
 declare module "@nuxt/schema" {
     interface AppConfig {
         appApi?: {
-            test?: string;
             errorCallback?: (errors: string[]) => void;
             extendHeaders?: (headers: AxiosRequestHeaders) => AxiosRequestHeaders;
             unhandledErrorCallback?: () => void;
@@ -16,7 +15,6 @@ declare module "@nuxt/schema" {
 
     interface AppConfigInput {
         appApi?: {
-            test?: string;
             errorCallback?: (errors: string[]) => void;
             extendHeaders?: (headers: AxiosRequestHeaders) => AxiosRequestHeaders;
             unhandledErrorCallback?: () => void;
