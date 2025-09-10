@@ -19,21 +19,6 @@ type ApiErrorData = Record<string, (string | ApiErrorData)[]>;
 type ApiError = AxiosError<ApiErrorData>;
 ```
 
-### App configs
-
----
-
-```typescript
-    {
-        appApi?: {
-            errorCallback?: (errors: string[]) => void;
-            extendHeaders?: (headers: AxiosRequestHeaders) => AxiosRequestHeaders;
-            unhandledErrorCallback?: () => void;
-            customAuthorizationHeader?: (token: string) => string;
-        };
-    }
-```
-
 ### Api composables list
 
 ---
@@ -45,3 +30,9 @@ type ApiError = AxiosError<ApiErrorData>;
 - `composables/useOne.ts`
 - `composables/usePaginatedMany.ts`
 - `composables/useUpdate.ts`
+
+### Api components list
+
+---
+
+- `components/ApiLayerWrapper.vue`
