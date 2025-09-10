@@ -5,7 +5,13 @@ export default defineNuxtPlugin({
     setup: () => {
         const config = useRuntimeConfig();
         const appConfig = useAppConfig();
-        const { token } = useAuth();
+        let auth;
+
+        try {
+            auth = useAuth();
+        } catch (e) {
+            auth = null;
+        }
 
         const axios = axiosOriginal.create({
             baseURL: config.public.API_BASE_URL,
@@ -16,11 +22,11 @@ export default defineNuxtPlugin({
                 config.headers = appConfig.appApi.extendHeaders(config.headers);
             }
 
-            if (config.authorization && token.value) {
+            if (config.authorization && auth && auth.token.value) {
                 if (appConfig.appApi?.customAuthorizationHeader) {
-                    appConfig.appApi.customAuthorizationHeader(token.value);
+                    appConfig.appApi.customAuthorizationHeader(auth.token.value);
                 } else {
-                    config.headers.Authorization = `Bearer ${token.value}`;
+                    config.headers.Authorization = `Bearer ${auth.token.value}`;
                 }
             }
 
@@ -30,7 +36,7 @@ export default defineNuxtPlugin({
         axios.interceptors.response.use(
             (response) => {
                 return response;
-            },
+            }
             // async function (error: ApiError) {
             //     if (process.env.NODE_ENV === "development") {
             //     }
