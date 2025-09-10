@@ -7,18 +7,24 @@ import { VueQueryDevtools } from "@tanstack/vue-query-devtools";
 // types
 
 type Props = {
+    dir?: "ltr" | "rtl";
     queryDevtools?: InstanceType<typeof VueQueryDevtools>["$props"]
 }
 
 // props
 
-defineProps<Props>();
+withDefaults(defineProps<Props>(), {
+    dir: "rtl"
+});
 
 </script>
 
 <template>
     <slot />
-    <VueQueryDevtools
-        v-bind="$props.queryDevtools"
-    />
+    <div :dir="dir">
+        <VueQueryDevtools
+            :dir="dir"
+            v-bind="$props.queryDevtools"
+        />
+    </div>
 </template>
