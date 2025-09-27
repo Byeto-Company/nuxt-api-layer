@@ -5,7 +5,7 @@ import type { AxiosInstance, AxiosRequestConfig } from "axios";
 
 // types
 
-export type ApiInfiniteManyResourceOptions<TResponse, TData = object> = {
+export type ApiInfiniteManyResourceOptions<TResponse> = {
     urlSearchParams?: ComputedRef<Record<any, any>>;
     customResource?: {
         name: string;
@@ -18,7 +18,7 @@ export type ApiInfiniteManyResourceOptions<TResponse, TData = object> = {
     }>;
     axiosInstance?: AxiosInstance;
     axiosOptions?: Omit<AxiosRequestConfig, "params">;
-    queryOptions?: Partial<Omit<UseInfiniteQueryOptions<TResponse & TData>, "queryKey" | "queryFn">>;
+    queryOptions?: Partial<Omit<UseInfiniteQueryOptions<TResponse>, "queryKey" | "queryFn">>;
     handleError?: boolean;
     authorization?: boolean;
 };
@@ -54,7 +54,7 @@ const useInfiniteMany = <TResponse, TData = object>({
     handleError,
     authorization,
     customResource,
-}: ApiInfiniteManyResourceOptions<TResponse, TData>) => {
+}: ApiInfiniteManyResourceOptions<ApiPaginated<TResponse, TData>>) => {
     // state
 
     const { $axios: globalAxiosInstance } = useNuxtApp();

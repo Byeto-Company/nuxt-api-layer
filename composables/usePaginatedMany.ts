@@ -5,7 +5,7 @@ import type { AxiosInstance, AxiosRequestConfig } from "axios";
 
 // types
 
-export type ApiPaginatedManyResourceOptions<TResponse, TData = object> = {
+export type ApiPaginatedManyResourceOptions<TResponse> = {
     customResource?: {
         name: string;
         path: string;
@@ -20,7 +20,7 @@ export type ApiPaginatedManyResourceOptions<TResponse, TData = object> = {
     }>;
     axiosInstance?: AxiosInstance;
     axiosOptions?: Omit<AxiosRequestConfig, "params">;
-    queryOptions?: Partial<Omit<UseQueryOptions<TResponse & TData>, "queryKey" | "queryFn">>;
+    queryOptions?: Partial<Omit<UseQueryOptions<TResponse>, "queryKey" | "queryFn">>;
     handleError?: boolean;
     authorization?: boolean;
 };
@@ -60,7 +60,7 @@ const usePaginatedMany = <TResponse, TData = object>({
     axiosInstance,
     handleError,
     authorization,
-}: ApiPaginatedManyResourceOptions<TResponse, TData>) => {
+}: ApiPaginatedManyResourceOptions<ApiPaginated<TResponse, TData>>) => {
     // state
 
     const { $axios: globalAxiosInstance } = useNuxtApp();
