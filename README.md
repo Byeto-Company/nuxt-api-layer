@@ -7,11 +7,12 @@
 ---
 
 ```typescript
-type ApiPaginated<T> = {
+type ApiPaginated<T, D = object> = {
     count: number;
     next: string | null;
     previous: string | null;
     results: T[];
+    data?: D;
 };
 
 type ApiErrorData = Record<string, (string | ApiErrorData)[]>;
@@ -38,10 +39,10 @@ type ApiError = AxiosError<ApiErrorData>;
 
 ---
 
-- `composables/useCreate.ts`
-- `composables/useDelete.ts`
-- `composables/useInfiniteMany.ts`
-- `composables/useMany.ts`
-- `composables/useOne.ts`
-- `composables/usePaginatedMany.ts`
-- `composables/useUpdate.ts`
+-   `composables/useCreate.ts`
+-   `composables/useDelete.ts`
+-   `composables/useInfiniteMany.ts`
+-   `composables/useMany.ts`
+-   `composables/useOne.ts`
+-   `composables/usePaginatedMany.ts`
+-   `composables/useUpdate.ts`
