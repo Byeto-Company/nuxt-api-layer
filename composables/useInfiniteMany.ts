@@ -5,7 +5,7 @@ import type { AxiosInstance, AxiosRequestConfig } from "axios";
 
 // types
 
-export type ApiInfiniteManyResourceOptions<TResponse> = {
+export type ApiInfiniteManyResourceOptions<TResponse, TData = object> = {
     urlSearchParams?: ComputedRef<Record<any, any>>;
     customResource?: {
         name: string;
@@ -18,7 +18,7 @@ export type ApiInfiniteManyResourceOptions<TResponse> = {
     }>;
     axiosInstance?: AxiosInstance;
     axiosOptions?: Omit<AxiosRequestConfig, "params">;
-    queryOptions?: Partial<Omit<UseInfiniteQueryOptions<TResponse>, "queryKey" | "queryFn">>;
+    queryOptions?: Partial<Omit<UseInfiniteQueryOptions<TResponse & TData>, "queryKey" | "queryFn">>;
     handleError?: boolean;
     authorization?: boolean;
 };
@@ -45,7 +45,7 @@ export type ApiInfiniteManyResourceOptions<TResponse> = {
  *          A TanStack Query infinite query result object.
  * @module composables/useInfiniteMany
  */
-const useInfiniteMany = <TResponse>({
+const useInfiniteMany = <TResponse, TData = object>({
     urlSearchParams,
     options,
     queryOptions,
@@ -54,7 +54,7 @@ const useInfiniteMany = <TResponse>({
     handleError,
     authorization,
     customResource,
-}: ApiInfiniteManyResourceOptions<TResponse>) => {
+}: ApiInfiniteManyResourceOptions<TResponse, TData>) => {
     // state
 
     const { $axios: globalAxiosInstance } = useNuxtApp();
@@ -70,7 +70,7 @@ const useInfiniteMany = <TResponse>({
     // methods
 
     const handleInfiniteMany = async ({ limit, offset }: any) => {
-        const { data } = await axios.get<ApiPaginated<TResponse>>(`${customResource?.path}/`, {
+        const { data } = await axios.get<ApiPaginated<TResponse, TData>>(`${customResource?.path}/`, {
             params: {
                 ...urlSearchParams?.value,
                 limit: limit,
@@ -83,7 +83,7 @@ const useInfiniteMany = <TResponse>({
         return data;
     };
 
-    return useInfiniteQuery<ApiPaginated<TResponse>, ApiError>({
+    return useInfiniteQuery<ApiPaginated<TResponse, TData>, ApiError>({
         queryKey: [customResource?.name, urlSearchParams],
         queryFn: ({ pageParam }) => handleInfiniteMany(pageParam),
         initialPageParam: {

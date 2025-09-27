@@ -5,7 +5,7 @@ import type { AxiosInstance, AxiosRequestConfig } from "axios";
 
 // types
 
-export type ApiPaginatedManyResourceOptions<TResponse> = {
+export type ApiPaginatedManyResourceOptions<TResponse, TData = object> = {
     customResource?: {
         name: string;
         path: string;
@@ -20,7 +20,7 @@ export type ApiPaginatedManyResourceOptions<TResponse> = {
     }>;
     axiosInstance?: AxiosInstance;
     axiosOptions?: Omit<AxiosRequestConfig, "params">;
-    queryOptions?: Partial<Omit<UseQueryOptions<TResponse>, "queryKey" | "queryFn">>;
+    queryOptions?: Partial<Omit<UseQueryOptions<TResponse & TData>, "queryKey" | "queryFn">>;
     handleError?: boolean;
     authorization?: boolean;
 };
@@ -51,7 +51,7 @@ export type ApiPaginatedManyResourceOptions<TResponse> = {
  *          A TanStack Query result object containing paginated resource data.
  * @module composables/useDelete
  */
-const usePaginatedMany = <TResponse>({
+const usePaginatedMany = <TResponse, TData = object>({
     customResource,
     urlSearchParams,
     options,
@@ -60,7 +60,7 @@ const usePaginatedMany = <TResponse>({
     axiosInstance,
     handleError,
     authorization,
-}: ApiPaginatedManyResourceOptions<TResponse>) => {
+}: ApiPaginatedManyResourceOptions<TResponse, TData>) => {
     // state
 
     const { $axios: globalAxiosInstance } = useNuxtApp();
@@ -81,7 +81,7 @@ const usePaginatedMany = <TResponse>({
     // methods
 
     const handleMany = async () => {
-        const { data } = await axios.get<ApiPaginated<TResponse>>(`${customResource?.path}`, {
+        const { data } = await axios.get<ApiPaginated<TResponse, TData>>(`${customResource?.path}`, {
             params: {
                 ...urlSearchParams?.value,
                 limit: limit.value,
@@ -94,7 +94,7 @@ const usePaginatedMany = <TResponse>({
         return data;
     };
 
-    return useQuery<ApiPaginated<TResponse>, ApiError>({
+    return useQuery<ApiPaginated<TResponse, TData>, ApiError>({
         queryKey: [customResource?.name, urlSearchParams, page],
         queryFn: () => handleMany(),
         meta: { handleError: handleError },

@@ -30,11 +30,12 @@ declare module "axios" {
 }
 
 declare global {
-    type ApiPaginated<T> = {
+    type ApiPaginated<T, D = object> = {
         count: number;
         next: string | null;
         previous: string | null;
         results: T[];
+        data?: D;
     };
 
     type ApiErrorData = Record<string, (string | ApiErrorData)[]>;
