@@ -1,3 +1,20 @@
+## [1.2.1] - 2025-09-27
+
+### New Features
+
+Add data field to ApaPaginated and also add D generic parameter to define its type
+
+```typescript
+type ApiPaginated<T, D = object> = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: T[];
+    data?: D;
+};
+```
+
+
 ## [1.2.0] - 2025-09-10
 
 ### New Features
