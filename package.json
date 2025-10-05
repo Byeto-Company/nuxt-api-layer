@@ -9,12 +9,10 @@
         "build": "nuxt build .playground",
         "generate": "nuxt generate .playground",
         "preview": "nuxt preview .playground",
-        "lint": "eslint .",
-        "gdoc": "documentation build **/*.ts --parse-extension ts -f html -o docs && bun scripts/replace-documentation-theme/index.ts"
+        "lint": "eslint ."
     },
     "devDependencies": {
         "@nuxt/eslint": "latest",
-        "documentation": "^14.0.3",
         "eslint": "^9.33.0",
         "nuxt": "^4.0.3",
         "typescript": "^5.9.2",
