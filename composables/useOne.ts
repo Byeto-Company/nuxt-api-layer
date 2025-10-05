@@ -6,7 +6,7 @@ import type { AxiosInstance, AxiosRequestConfig } from "axios";
 // types
 
 export type ApiOneResourceOptions<TResponse> = {
-    id?: MaybeRef<string | number>;
+    id?: MaybeRefOrGetter<string | number>;
     customResource?: {
         name: string;
         path: string;
@@ -60,7 +60,7 @@ const useOne = <TResponse>({
     // methods
 
     const handleOne = async () => {
-        const { data } = await axios.get<TResponse>(`${customResource?.path}${id ? "/" + unref(id) : ""}`, {
+        const { data } = await axios.get<TResponse>(`${customResource?.path}${id ? "/" + toValue(id) : ""}`, {
             params: { ...urlSearchParams?.value },
             ...axiosOptions,
             authorization,
