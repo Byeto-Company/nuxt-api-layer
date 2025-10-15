@@ -36,7 +36,7 @@ export type ApiDeleteResourceOptions<TResponse> = {
  * @param {boolean} [options.handleError] - Whether errors should be handled by a global handler.
  * @param {boolean} [options.authorization] - Whether to include authorization headers.
  *
- * @returns {UseMutationResult<TResponse, ApiError, TRequest & { id: number | string }>} 
+ * @returns {UseMutationResult<TResponse, ApiError, TRequest & { id: number | string }>}
  *          A TanStack Query mutation object.
  * @module composables/useDelete
  */
@@ -57,21 +57,18 @@ const useDelete = <TResponse, TRequest>({
 
     // methods
 
-    const handleDelete = async (variables: TRequest & { id: number | string }) => {
-        const { data } = await axios.delete<TResponse>(
-            `${customResource?.path}/${variables.id}`,
-            {
-                params: { ...urlSearchParams?.value },
-                data: { ...variables, id: undefined },
-                ...axiosOptions,
-                authorization,
-            }
-        );
+    const handleDelete = async (variables: TRequest & { id?: number | string }) => {
+        const { data } = await axios.delete<TResponse>(`${customResource?.path}/${variables.id ?? ""}`, {
+            params: { ...urlSearchParams?.value },
+            data: { ...variables, id: undefined },
+            ...axiosOptions,
+            authorization,
+        });
 
         return data;
     };
 
-    return useMutation<TResponse, ApiError, TRequest & { id: number | string }>({
+    return useMutation<TResponse, ApiError, TRequest & { id?: number | string }>({
         mutationKey: customResource?.name ? [customResource.name] : undefined,
         mutationFn: (variables) => handleDelete(variables),
         meta: { handleError: handleError },

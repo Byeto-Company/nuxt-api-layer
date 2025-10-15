@@ -60,9 +60,9 @@ const useUpdate = <TResponse, TRequest>({
 
     // methods
 
-    const handleUpdate = async (variables: TRequest & { id: number | string }) => {
+    const handleUpdate = async (variables: TRequest & { id?: number | string }) => {
         const { data } = await axios.patch<TResponse>(
-            `${customResource?.path}/${variables.id}`,
+            `${customResource?.path}/${variables.id ?? ""}`,
             { ...variables, id: undefined },
             {
                 params: { ...urlSearchParams?.value },
@@ -78,7 +78,7 @@ const useUpdate = <TResponse, TRequest>({
         return data;
     };
 
-    return useMutation<TResponse, ApiError, TRequest & { id: number | string }>({
+    return useMutation<TResponse, ApiError, TRequest & { id?: number | string }>({
         mutationKey: customResource?.name ? [customResource.name] : undefined,
         mutationFn: (variables) => handleUpdate(variables),
         meta: { handleError: handleError },
