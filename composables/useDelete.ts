@@ -58,12 +58,15 @@ const useDelete = <TResponse, TRequest>({
     // methods
 
     const handleDelete = async (variables: TRequest & { id?: number | string }) => {
-        const { data } = await axios.delete<TResponse>(`${customResource?.path}/${variables.id ?? ""}`, {
-            params: { ...urlSearchParams?.value },
-            data: { ...variables, id: undefined },
-            ...axiosOptions,
-            authorization,
-        });
+        const { data } = await axios.delete<TResponse>(
+            `${customResource?.path}${variables.id ? "/" + variables.id : ""}`,
+            {
+                params: { ...urlSearchParams?.value },
+                data: { ...variables, id: undefined },
+                ...axiosOptions,
+                authorization,
+            }
+        );
 
         return data;
     };

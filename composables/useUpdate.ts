@@ -62,7 +62,7 @@ const useUpdate = <TResponse, TRequest>({
 
     const handleUpdate = async (variables: TRequest & { id?: number | string }) => {
         const { data } = await axios.patch<TResponse>(
-            `${customResource?.path}/${variables.id ?? ""}`,
+            `${customResource?.path}${variables.id ? "/" + variables.id : ""}`,
             { ...variables, id: undefined },
             {
                 params: { ...urlSearchParams?.value },
