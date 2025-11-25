@@ -70,7 +70,7 @@ const useInfiniteMany = <TResponse, TData = object>({
     // methods
 
     const handleInfiniteMany = async ({ limit, offset }: any) => {
-        const { data } = await axios.get<ApiPaginated<TResponse, TData>>(`${customResource?.path}/`, {
+        const { data } = await axios.get<ApiPaginated<TResponse, TData>>(`${customResource?.path}`, {
             params: {
                 ...urlSearchParams?.value,
                 limit: limit,
