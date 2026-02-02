@@ -25,33 +25,7 @@ export type ApiPaginatedManyResourceOptions<TResponse> = {
     authorization?: boolean;
 };
 
-/**
- * Composable for fetching a paginated list of API resources using Axios + TanStack Query's `useQuery`.
- *
- * @template TResponse - The type of each item in the paginated response.
- *
- * @param {Object} options - Options for configuring the query.
- * @param {Object} [options.customResource] - Optional custom resource configuration.
- * @param {string} options.customResource.name - The resource name (used as part of the query key).
- * @param {string} options.customResource.path - The API path for the resource.
- * @param {ComputedRef<Record<any, any>>} [options.urlSearchParams] - Optional query parameters as a computed ref.
- * @param {MaybeRefOrGetter<{ pagination?: { page?: number; limit?: number; initialOffset?: number } }>} [options.options]
- *        Pagination options:
- *        - `page`: Current page (default: taken from `?page=` query param or 1).
- *        - `limit`: Items per page (default: taken from `?limit=` query param or 10).
- *        - `initialOffset`: Explicit offset (default: taken from `?offset=` query param).
- * @param {AxiosInstance} [options.axiosInstance] - Optional Axios instance (defaults to Nuxt global `$axios`).
- * @param {Omit<AxiosRequestConfig, "params">} [options.axiosOptions] - Optional Axios request configuration.
- * @param {Partial<Omit<UseQueryOptions<ApiPaginated<TResponse>>, "queryKey" | "queryFn">>} [options.queryOptions]
- *        Extra query options from TanStack Query.
- * @param {boolean} [options.handleError] - Whether to handle errors with a global handler.
- * @param {boolean} [options.authorization] - Whether to include authorization headers.
- *
- * @returns {UseQueryResult<ApiPaginated<TResponse>, ApiError>}
- *          A TanStack Query result object containing paginated resource data.
- * @module composables/useDelete
- */
-const usePaginatedMany = <TResponse, TData = object>({
+const usePaginatedMany = <TResponse>({
     customResource,
     urlSearchParams,
     options,
@@ -60,7 +34,7 @@ const usePaginatedMany = <TResponse, TData = object>({
     axiosInstance,
     handleError,
     authorization,
-}: ApiPaginatedManyResourceOptions<ApiPaginated<TResponse, TData>>) => {
+}: ApiPaginatedManyResourceOptions<TResponse>) => {
     // state
 
     const { $axios: globalAxiosInstance } = useNuxtApp();
@@ -81,7 +55,7 @@ const usePaginatedMany = <TResponse, TData = object>({
     // methods
 
     const handleMany = async () => {
-        const { data } = await axios.get<ApiPaginated<TResponse, TData>>(`${customResource?.path}`, {
+        const { data } = await axios.get<TResponse>(`${customResource?.path}`, {
             params: {
                 ...urlSearchParams?.value,
                 limit: limit.value,
@@ -94,7 +68,7 @@ const usePaginatedMany = <TResponse, TData = object>({
         return data;
     };
 
-    return useQuery<ApiPaginated<TResponse, TData>, ApiError>({
+    return useQuery<TResponse, ApiError>({
         queryKey: [customResource?.name, urlSearchParams, page],
         queryFn: () => handleMany(),
         meta: { handleError: handleError },

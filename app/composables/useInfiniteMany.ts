@@ -23,29 +23,7 @@ export type ApiInfiniteManyResourceOptions<TResponse> = {
     authorization?: boolean;
 };
 
-/**
- * Composable for fetching paginated API resources using Axios + TanStack Query's `useInfiniteQuery`.
- *
- * @template TResponse - The type of the individual resource items returned by the API.
- *
- * @param {Object} options - Options for configuring the infinite query.
- * @param {ComputedRef<Record<any, any>>} [options.urlSearchParams] - Optional query parameters as a computed ref.
- * @param {Object} [options.customResource] - Optional custom resource configuration.
- * @param {string} options.customResource.name - The resource name (used as part of the query key).
- * @param {string} options.customResource.path - The API path for the resource.
- * @param {MaybeRefOrGetter<{ pagination?: { limit?: number } }>} [options.options] - Additional options, such as pagination.
- * @param {AxiosInstance} [options.axiosInstance] - Optional Axios instance (defaults to Nuxt global `$axios`).
- * @param {Omit<AxiosRequestConfig, "params">} [options.axiosOptions] - Optional Axios request configuration.
- * @param {Partial<Omit<UseInfiniteQueryOptions<TResponse>, "queryKey" | "queryFn">>} [options.queryOptions]
- *        Extra query options from TanStack Query.
- * @param {boolean} [options.handleError] - Whether to handle errors with a global handler.
- * @param {boolean} [options.authorization] - Whether to include authorization headers.
- *
- * @returns {UseInfiniteQueryResult<ApiPaginated<TResponse>, ApiError>}
- *          A TanStack Query infinite query result object.
- * @module composables/useInfiniteMany
- */
-const useInfiniteMany = <TResponse, TData = object>({
+const useInfiniteMany = <TResponse>({
     urlSearchParams,
     options,
     queryOptions,
@@ -54,7 +32,7 @@ const useInfiniteMany = <TResponse, TData = object>({
     handleError,
     authorization,
     customResource,
-}: ApiInfiniteManyResourceOptions<ApiPaginated<TResponse, TData>>) => {
+}: ApiInfiniteManyResourceOptions<TResponse>) => {
     // state
 
     const { $axios: globalAxiosInstance } = useNuxtApp();
@@ -70,7 +48,7 @@ const useInfiniteMany = <TResponse, TData = object>({
     // methods
 
     const handleInfiniteMany = async ({ limit, offset }: any) => {
-        const { data } = await axios.get<ApiPaginated<TResponse, TData>>(`${customResource?.path}`, {
+        const { data } = await axios.get<TResponse>(`${customResource?.path}`, {
             params: {
                 ...urlSearchParams?.value,
                 limit: limit,
@@ -83,7 +61,7 @@ const useInfiniteMany = <TResponse, TData = object>({
         return data;
     };
 
-    return useInfiniteQuery<ApiPaginated<TResponse, TData>, ApiError>({
+    return useInfiniteQuery<TResponse, ApiError>({
         queryKey: [customResource?.name, urlSearchParams],
         queryFn: ({ pageParam }) => handleInfiniteMany(pageParam),
         initialPageParam: {
