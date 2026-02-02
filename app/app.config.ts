@@ -1,24 +1,27 @@
+import type { QueryClientConfig } from "@tanstack/vue-query";
 import "axios";
-import type { AxiosError, AxiosRequestHeaders } from "axios";
+import type { AxiosRequestHeaders } from "axios";
 
 export default defineAppConfig({});
 
 declare module "@nuxt/schema" {
     interface AppConfig {
         appApi?: {
-            errorCallback?: (errors: string[]) => void;
+            errorCallback?: (error: ApiError) => void;
             extendHeaders?: (headers: AxiosRequestHeaders) => AxiosRequestHeaders;
             unhandledErrorCallback?: () => void;
             customAuthorizationHeader?: (token: string) => string;
+            queryClientOptions?: QueryClientConfig;
         };
     }
 
     interface AppConfigInput {
         appApi?: {
-            errorCallback?: (errors: string[]) => void;
+            errorCallback?: (errors: ApiError) => void;
             extendHeaders?: (headers: AxiosRequestHeaders) => AxiosRequestHeaders;
             unhandledErrorCallback?: () => void;
             customAuthorizationHeader?: (token: string) => string;
+            queryClientOptions?: QueryClientConfig;
         };
     }
 }
@@ -27,18 +30,4 @@ declare module "axios" {
     export interface AxiosRequestConfig {
         authorization?: boolean;
     }
-}
-
-declare global {
-    type ApiPaginated<T, D = object> = {
-        count: number;
-        next: string | null;
-        previous: string | null;
-        results: T[];
-        data?: D;
-    };
-
-    type ApiErrorData = Record<string, (string | ApiErrorData)[]>;
-
-    type ApiError = AxiosError<ApiErrorData>;
 }

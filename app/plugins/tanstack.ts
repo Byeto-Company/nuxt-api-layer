@@ -11,33 +11,11 @@ export default defineNuxtPlugin({
 
         const vueQueryState = useState<DehydratedState | null>("vue-query");
 
-        const flattenErrors = (err: ApiError) => {
-            const errorTexts: string[] = [];
-
-            const flattenFn = (err: ApiError) => {
-                const errorResponse = err.response!.data;
-
-                for (const key in errorResponse) {
-                    for (const errorItem of errorResponse[key]) {
-                        if (typeof errorItem === "string") errorTexts.push(errorItem);
-                        else {
-                            flattenFn(errorItem);
-                        }
-                    }
-                }
-            };
-
-            flattenFn(err);
-
-            return errorTexts;
-        };
-
         const errorHandler = (error: ApiError) => {
             if (import.meta.client && error instanceof AxiosError) {
                 if (error.status && error.status >= 400 && error.status <= 499) {
                     if (appConfig.appApi?.errorCallback) {
-                        const errorsText = flattenErrors(error);
-                        appConfig.appApi?.errorCallback(errorsText);
+                        appConfig.appApi?.errorCallback(error);
                     }
                 } else {
                     if (appConfig.appApi?.unhandledErrorCallback) {
@@ -53,12 +31,13 @@ export default defineNuxtPlugin({
                 onError: (error, query) => {
                     if (query.meta?.handleError) errorHandler(error as ApiError);
                 },
-            }), 
+            }),
             mutationCache: new MutationCache({
                 onError: (error, _variables, _context, mutation) => {
                     if (mutation.meta?.handleError) errorHandler(error as ApiError);
                 },
             }),
+            ...appConfig.appApi?.queryClientOptions,
         });
         const options: VueQueryPluginOptions = { queryClient };
 
