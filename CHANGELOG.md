@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/Byeto-Company/nuxt-api-layer/compare/v3.0.0...v3.0.1) (2026-02-02)
+
+
+### Bug Fixes
+
+* Fix nuxt api layer interface ([dad4ddb](https://github.com/Byeto-Company/nuxt-api-layer/commit/dad4ddb9ffab4a40f36f6e2f963417152df68f5d))
+
 # [3.0.0](https://github.com/Byeto-Company/nuxt-api-layer/compare/v2.0.0...v3.0.0) (2026-02-02)
 
 
