@@ -31,3 +31,7 @@ declare module "axios" {
         authorization?: boolean;
     }
 }
+
+export interface NuxtApiLayer {
+    ApiErrorData: unknown;
+}
