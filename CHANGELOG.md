@@ -1,3 +1,25 @@
+# [3.0.0](https://github.com/Byeto-Company/nuxt-api-layer/compare/v2.0.0...v3.0.0) (2026-02-02)
+
+
+### Bug Fixes
+
+* Remove js docs ([3f2980b](https://github.com/Byeto-Company/nuxt-api-layer/commit/3f2980b19cbe4f9452983b95b8b24b3c1f1dc663))
+
+
+### Features
+
+* Add new app config option for customizing query client and also make error callback logic simpler ([22b75c4](https://github.com/Byeto-Company/nuxt-api-layer/commit/22b75c4db702c139fa3f20595aa45d968e432779))
+
+
+### Performance Improvements
+
+* Remove api paginated for more simplicity ([8d07e69](https://github.com/Byeto-Company/nuxt-api-layer/commit/8d07e6905250946556a98085ef64bd0715d3dd99))
+
+
+### BREAKING CHANGES
+
+* the api paginated is removed and the paginated type is no more applying on paginated composables
+
 # [2.0.0](https://github.com/Byeto-Company/nuxt-api-layer/compare/v1.0.1...v2.0.0) (2025-11-29)
 
 
