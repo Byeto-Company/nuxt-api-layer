@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/Byeto-Company/nuxt-api-layer/compare/v3.0.1...v3.1.0) (2026-02-02)
+
+
+### Features
+
+* Added query and mutation parameter for access to the query or mutation composable data ([84261e1](https://github.com/Byeto-Company/nuxt-api-layer/commit/84261e1364ba39ac3c19a6580d0e888bd686875b))
+
 ## [3.0.1](https://github.com/Byeto-Company/nuxt-api-layer/compare/v3.0.0...v3.0.1) (2026-02-02)
 
 
