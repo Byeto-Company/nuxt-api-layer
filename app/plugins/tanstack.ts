@@ -1,4 +1,4 @@
-import type { DehydratedState, VueQueryPluginOptions } from "@tanstack/vue-query";
+import type { DehydratedState, Mutation, Query, VueQueryPluginOptions } from "@tanstack/vue-query";
 import { VueQueryPlugin, QueryClient, hydrate, dehydrate, QueryCache, MutationCache } from "@tanstack/vue-query";
 
 import { defineNuxtPlugin, useState } from "#imports";
@@ -11,11 +11,15 @@ export default defineNuxtPlugin({
 
         const vueQueryState = useState<DehydratedState | null>("vue-query");
 
-        const errorHandler = (error: ApiError) => {
-            if (import.meta.client && error instanceof AxiosError) {
-                if (error.status && error.status >= 400 && error.status <= 499) {
+        const errorHandler = (errorData: {
+            error: ApiError;
+            query?: Query<unknown, unknown, unknown, readonly unknown[]>;
+            mutation?: Mutation<unknown, unknown, unknown, unknown>;
+        }) => {
+            if (import.meta.client && errorData.error instanceof AxiosError) {
+                if (errorData.error.status && errorData.error.status >= 400 && errorData.error.status <= 499) {
                     if (appConfig.appApi?.errorCallback) {
-                        appConfig.appApi?.errorCallback(error);
+                        appConfig.appApi?.errorCallback(errorData);
                     }
                 } else {
                     if (appConfig.appApi?.unhandledErrorCallback) {
@@ -29,13 +33,15 @@ export default defineNuxtPlugin({
             defaultOptions: { queries: { staleTime: 5000 } },
             queryCache: new QueryCache({
                 onError: (error, query) => {
-                    if (query.meta?.handleError) errorHandler(error as ApiError);
+                    if (query.meta?.handleError) errorHandler({ error, query });
                 },
+                ...appConfig.appApi?.queryCacheOptions,
             }),
             mutationCache: new MutationCache({
                 onError: (error, _variables, _context, mutation) => {
-                    if (mutation.meta?.handleError) errorHandler(error as ApiError);
+                    if (mutation.meta?.handleError) errorHandler({ error, mutation });
                 },
+                ...appConfig.appApi?.mutationCacheOptions,
             }),
             ...appConfig.appApi?.queryClientOptions,
         });
