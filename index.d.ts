@@ -1,5 +1,5 @@
 export interface NuxtApiLayer {
-    ApiErrorData: unknown;
+    ApiErrorData: unknown; 
 }
 
 declare global {
