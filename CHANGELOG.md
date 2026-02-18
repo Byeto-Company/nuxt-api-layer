@@ -1,3 +1,11 @@
+## [3.1.1](https://github.com/Byeto-Company/nuxt-api-layer/compare/v3.1.0...v3.1.1) (2026-02-18)
+
+
+### Bug Fixes
+
+* Update type system for AxiosError ([2dd3edd](https://github.com/Byeto-Company/nuxt-api-layer/commit/2dd3eddd1cb3e6a4d50c75bf7866608cad36c6ad))
+* Updated ([39bbc83](https://github.com/Byeto-Company/nuxt-api-layer/commit/39bbc83182af295d964b6adc5027449b17c7298c))
+
 # [3.1.0](https://github.com/Byeto-Company/nuxt-api-layer/compare/v3.0.1...v3.1.0) (2026-02-02)
 
 
