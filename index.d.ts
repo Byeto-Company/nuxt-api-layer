@@ -1,10 +1,16 @@
-export interface NuxtApiLayer {
-    ApiErrorData: unknown; 
+import type { AxiosError } from "axios";
+
+export namespace NuxtApiLayer {
+    export interface Config {
+        ApiErrorData: unknown;
+    }
 }
 
 declare global {
-    type ApiError = AxiosError<NuxtApiLayer["ApiErrorData"]>;
+    type ApiError = AxiosError<NuxtApiLayer.Config["ApiErrorData"]>;
 }
+
+export interface NuxtApiLayer extends NuxtApiLayer.Config {}
 
 // type ApiPaginated<T, D = object> = {
 //     count: number;
